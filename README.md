@@ -17,7 +17,7 @@ We will check if the email contains either @gmail, or @hotmail, if not, we will 
 Then we will redirect the user to the Client Interface.
 
 ### LOG-IN
-We will ask the user for his **EMAIL.  
+We will ask the user for his **EMAIL**.  
 We will search this email in our List of Users\*, if it matches anyone's email, we will ask for his password, if not, we will throw an error message saying it does not exist in the database.  
 For the password we will simply compare the user's password with the once introduced and if it matches, we will redirect the user to the Client Interface.  
 If the email contains "**@onFire.com**", and introduce the company code ("1234OF") *We will not ask for any password*, we redirect the user to the Admin Interface.  
