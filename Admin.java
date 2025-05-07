@@ -5,7 +5,7 @@ public class Admin extends Usuario {
 
     public Admin(String email, String contrasenya, String claveEmpresa, String nombre){
         super(email, contrasenya, nombre);
-        this.claveEmpresa = claveEmpresa;
+        this.claveEmpresa = "0000000F";
     }
 
     @Override
