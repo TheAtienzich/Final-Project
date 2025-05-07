@@ -33,4 +33,13 @@ public abstract class Usuario {
     public void setEmail(String email) {
             this.email = email;
     }
+
+    public String AFichero(){
+        return email + ";" + passWord + ";" + name;
+    }
+
+
+    public String ToString(){
+        return "email: " + email + " Nombre: " + name;
+    }
 }

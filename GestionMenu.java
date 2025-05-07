@@ -149,7 +149,7 @@ public class GestionMenu {
         do {
             System.out.println("-   -¿QUE QUIERES HACER?-   -");
             System.out.println(" 1. Añadir la vela al carrito");
-            System.out.println(" 0. ");
+            System.out.println(" 0. Salir al menu");
             System.out.println("-------------------------");
             seleccion = sc.nextInt();
             if(seleccion == 1 || seleccion == 0){
@@ -164,6 +164,7 @@ public class GestionMenu {
         System.out.println("Nombre: " + v.getName());
         System.out.println(v.getLongDescrp());
         System.out.println("Precio: " + v.getPrice());
+        MenuVelasDetallada();
     }
 
     public void verListadoVelas(){
