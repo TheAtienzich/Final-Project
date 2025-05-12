@@ -66,9 +66,12 @@ public class Candle {
 
     //Añadir y Restar Velas
 
-    @Override
-    public String toString() {
-        return super.toString();
+    public String ToString() {
+        return name + " (" + shortDescp + ") Unidades: " + amount;
+    }
+    public String AFichero() {
+        return candleCode + ";" + name + ";" + shortDescp + ";" + longDescrp + ";"
+                + price + ";" + candleFragrance.getID();
     }
 
     
