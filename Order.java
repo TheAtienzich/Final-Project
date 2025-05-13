@@ -7,9 +7,9 @@ public class Order {
     private Cliente client;
     private HashMap<Candle, String> candlesOrder;
 
-
-    public Order(String codeOrder, double totalPrice, Calendar orderDate, Cliente client) {
-        this.codeOrder = codeOrder;
+    // Aqui quite el codigo de pedido, por que se genera automaticamente
+    public Order(double totalPrice, Calendar orderDate, Cliente client) {
+        this.codeOrder = GeneradorNumeroPedido.getInstancia().generarNumeroPedido();
         this.totalPrice = totalPrice;
         this.orderDate = orderDate;
         this.client = client;
