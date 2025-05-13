@@ -46,4 +46,18 @@ public class Order {
     public void setClientName(Cliente client) {
         this.client = client;
     }
+    // Nuevo metodo implementado para poder mostrar los pedidos
+    @Override
+    public String toString() {
+        String result = codeOrder + ": " +
+                "\nTotal price: " + totalPrice +
+                "\nOrder date: " + orderDate.getTime() +
+                "\nClient: " + client.getName() +
+                "\nCandles:\n";
+
+        for (var vela : candlesOrder.entrySet()) {
+            result += "   - " + vela.getKey().getName() + " (" + vela.getValue() + ")\n";
+        }
+        return result;
+    }
 }

@@ -179,8 +179,6 @@ public class GestionMenu {
         System.out.println(v.getLongDescrp());
         System.out.println("Precio: " + v.getPrice());
         MenuVelasDetallada(v);
-
-
     }
 
     public void verListadoVelas(){
@@ -230,7 +228,11 @@ public class GestionMenu {
         }
         System.out.println("-------------------------");
     }
-
+    //Opcion verPedido
+    public void verPedido()
+    {
+        System.out.println("-     Pedido:-   -   -");
+    }
     public opcionMenuCarrito menuCarrito(){
         int seleccion;
         boolean norepetir = false;
