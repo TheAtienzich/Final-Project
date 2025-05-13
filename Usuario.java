@@ -24,14 +24,13 @@ public abstract class Usuario {
         return email;
     }
 
+    public void setEmail(String email) {
+            this.email = email;
+    }
     public static boolean emailValido(String email){
         Pattern p = Pattern.compile("^[a-zA-Z0-9._%+-]+@(gmail\\.com|@hotmail\\.com|@onFire\\.com)$");
         Matcher m = p.matcher(email);
         return m.matches();
-    }
-
-    public void setEmail(String email) {
-            this.email = email;
     }
 
     public String AFichero(){
