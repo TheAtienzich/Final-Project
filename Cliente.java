@@ -18,13 +18,7 @@ public class Cliente extends Usuario{
         ordersClient = new ArrayList<>();
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public CreditCard getCreditCardClient() {
         return creditCardClient;

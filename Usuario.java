@@ -12,20 +12,29 @@ public abstract class Usuario {
         this.name = name;
     }
 
+    public String getName() {
+
+        return email;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+
+        return email;
+    }
+
+    public void setEmail(String email) {
+            this.email = email;
+    }
     public String getPassWord() {
         return passWord;
     }
 
     public void setPassWord(String passWord) {
         this.passWord = passWord;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-            this.email = email;
     }
     public static boolean emailValido(String email){
         Pattern p = Pattern.compile("^[a-zA-Z0-9._%+-]+@(gmail\\.com|@hotmail\\.com|@onFire\\.com)$");
