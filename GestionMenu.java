@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -9,6 +11,7 @@ public class GestionMenu {
     //En cada posicion de esa lista se va a guardar un objeto vela (Se usara en la primera opcion de "Mostrar velas")
     private final List<Cliente> clientsApp = new ArrayList<>();
     private final List<Candle> Carrito =  new ArrayList();
+    private Cliente clienteSesionActual = null;
 
     enum opcionMenuBienvenida { SALIR, INICIARSESION, REGISTRARSE }
     enum opcionMenuCliente { SALIR, VERCARRITO, VERPEDIDOS, VERVELAS }
@@ -89,7 +92,7 @@ public class GestionMenu {
         return opcionMenuBienvenida.values()[seleccion];
     }
 
-    public Cliente Registrarse(){
+    public void Registrarse(){
         System.out.print("Name: ");
         String name = sc.nextLine();
         System.out.println();
@@ -110,10 +113,10 @@ public class GestionMenu {
         Cliente c = new Cliente(name, surname, email, password);
         clientsApp.add(c);
         System.out.println("Bienvenido " + c.getName());
-        return c;
+        clienteSesionActual = c;
     }
 
-    public Cliente IniciarSesion(){
+    public void IniciarSesion(){
         String email;
         String passWord;
         Cliente c = null;
@@ -141,7 +144,7 @@ public class GestionMenu {
         }while(!passwordCorrect);
 
         System.out.println("Bienvenido " + c.getName());
-        return c;
+        clienteSesionActual = c;
     }
     //--------------------------------------------
 
@@ -165,7 +168,7 @@ public class GestionMenu {
 
     public void AñadirVelaCarrito(Candle c){
         System.out.println("¿Cuantas de estas velas quieres?");
-        c.AñadirCantidad(sc.nextInt());
+        c.AnyadirCantidad(sc.nextInt());
         Carrito.add(c);
     }
 
@@ -220,7 +223,7 @@ public class GestionMenu {
 
     //Opcion VerCarrito
     public void verCarrito(){
-        System.out.println("-   -   -CARRITO-   -   -");
+        System.out.println("--------------------------");
         int contador = 1;
         for(Candle c : Carrito){
             System.out.println(contador + ". " +
@@ -235,6 +238,7 @@ public class GestionMenu {
         int seleccion;
         boolean norepetir = false;
         do {
+            System.out.println("-   -   -CARRITO-   -   -");
             verCarrito();
             System.out.println("---¿Que quieres hacer?---");
             System.out.println("1. " + opcionMenuCarrito.AÑADIRVELAS);
@@ -249,4 +253,84 @@ public class GestionMenu {
         } while(!norepetir);
         return opcionMenuCarrito.values()[seleccion];
     }
+
+    public void añadirVelas() {
+        verCarrito();
+        System.out.println("-¿De cual quieres añadir?- (Number)");
+        Candle c = Carrito.get(sc.nextInt()-1);
+        System.out.println("-¿Cuantas quieres añadir?-");
+        c.AnyadirCantidad(sc.nextInt());
+    }
+
+    public void quitarVelas() {
+        verCarrito();
+        System.out.println("-¿De cual quieres quitar?- (Number)");
+        Candle c = Carrito.get(sc.nextInt()-1);
+        System.out.println("-¿Cuantas quieres quitar?-");
+        c.RestarCantidad(sc.nextInt());
+    }
+
+    public void confirmarCompra(){
+        if(clienteSesionActual.getAddress() == ""){
+            System.out.println("Phone Number: ");
+            clienteSesionActual.setPhoneNumber(sc.nextInt());
+            System.out.println("Postal Code: ");
+            clienteSesionActual.setPostalCode(sc.nextLine());
+            System.out.println("Province: ");
+            clienteSesionActual.setProvince(sc.nextLine());
+            System.out.println("Locality: ");
+            clienteSesionActual.setLocality(sc.nextLine());
+            System.out.println("Address: ");
+            clienteSesionActual.setAddress(sc.nextLine());
+        }
+
+        System.out.println("---CreditCard Information---");
+        String cardNum, CVV, titularName;
+        Calendar expirationDate;
+        boolean todoCorrecto = true;
+        do{
+            System.out.println("Credit Card Number: ");
+            cardNum = sc.nextLine();
+            System.out.println("CVV: ");
+            CVV = sc.nextLine();
+
+            if(cardNum.length() != 20 && CVV.length() != 3){
+                System.out.println("Invalid Information");
+                todoCorrecto = false;
+            }
+            else{
+                todoCorrecto = true;
+            }
+        } while(!todoCorrecto);
+
+
+        System.out.println("Titular's name: ");
+        titularName = sc.nextLine();
+
+        System.out.println("Expiration Date: ");
+        FillDate();
+
+        System.out.println("Are you sure of your purchase?(Y/N)");
+        if(sc.nextLine() == "Y"){
+
+        }
+    }
+
+    public void FillDate(){
+        LocalDate date;
+
+        try{
+            String input = sc.nextLine();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+            date = LocalDate.parse(input, formatter);
+
+        } catch (Exception e) {
+            System.out.println("Invalid Date");
+            System.out.println();
+            FillDate();
+        }
+    }
 }
+
+

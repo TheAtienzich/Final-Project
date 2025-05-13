@@ -5,11 +5,9 @@ public class Cliente extends Usuario{
     private String surname;
     private String address;
     private int phoneNumber;
-    private String DNI;
     private String postalCode;
     private String province;
     private String locality;
-    private CreditCard creditCardClient;
     private List<Order> ordersClient;
 
     public Cliente(String name, String surname, String email, String passWord) {
@@ -26,14 +24,6 @@ public class Cliente extends Usuario{
         this.name = name;
     }
 
-    public CreditCard getCreditCardClient() {
-        return creditCardClient;
-    }
-
-    public void setCreditCardClient(CreditCard creditCardClient) {
-        this.creditCardClient = creditCardClient;
-    }
-
     public String getLocality() {
         return locality;
     }
@@ -48,14 +38,6 @@ public class Cliente extends Usuario{
 
     public void setProvince(String province) {
         this.province = province;
-    }
-
-    public String getDNI() {
-        return DNI;
-    }
-
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
     }
 
     public String getPostalCode() {
