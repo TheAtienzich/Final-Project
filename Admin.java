@@ -1,9 +1,7 @@
-import java.util.*;
-
-public class Admin extends Usuario {
+public class Admin extends User {
     private String claveEmpresa;
 
-    public Admin(String email, String contrasenya, String claveEmpresa, String nombre){
+    public Admin(String email, String contrasenya, String nombre){
         super(email, contrasenya, nombre);
         this.claveEmpresa = "000000F";
     }
