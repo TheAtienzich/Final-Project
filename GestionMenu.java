@@ -70,6 +70,7 @@ public class GestionMenu {
         return stockCandles;
     }
 
+    //MenuBienvenida
     public opcionMenuBienvenida MenuBienvenida(){
         int seleccion;
         boolean norepetir = false;
@@ -142,8 +143,11 @@ public class GestionMenu {
         System.out.println("Bienvenido " + c.getName());
         return c;
     }
+    //--------------------------------------------
 
-    public opcionMenuVelasDetallado MenuVelasDetallada(){
+
+    //Opcion ver velas
+    public opcionMenuVelasDetallado MenuVelasDetallada(Candle c) {
         int seleccion;
         boolean norepetir = false;
         do {
@@ -152,11 +156,21 @@ public class GestionMenu {
             System.out.println(" 0. Salir al menu");
             System.out.println("-------------------------");
             seleccion = sc.nextInt();
-            if(seleccion == 1 || seleccion == 0){
+            if (seleccion == 1 || seleccion == 0) {
                 norepetir = true;
             }
-        }while(!norepetir);
+        } while (!norepetir);
         return opcionMenuVelasDetallado.values()[seleccion];
+    }
+
+    public void AñadirVelaCarrito(Candle c){
+        System.out.println("¿Cuantas de estas velas quieres?");
+        c.AñadirCantidad(sc.nextInt());
+        Carrito.add(c);
+    }
+
+    public void SalirAMenuVelas(){
+        verListadoVelas();
     }
 
     public void verVelaPagina(int seleccion){
@@ -164,7 +178,9 @@ public class GestionMenu {
         System.out.println("Nombre: " + v.getName());
         System.out.println(v.getLongDescrp());
         System.out.println("Precio: " + v.getPrice());
-        MenuVelasDetallada();
+        MenuVelasDetallada(v);
+
+
     }
 
     public void verListadoVelas(){
@@ -179,7 +195,9 @@ public class GestionMenu {
         int seleccion = sc.nextInt()-1;
         verVelaPagina(seleccion);
     }
+    //--------------
 
+    //Menu Cliente
     public opcionMenuCliente MenuCliente(){
         int seleccion;
         boolean norepetir = false;
@@ -197,5 +215,38 @@ public class GestionMenu {
             }
         }while(!norepetir);
         return opcionMenuCliente.values()[seleccion];
+    }
+    //----------------------------------
+
+    //Opcion VerCarrito
+    public void verCarrito(){
+        System.out.println("-   -   -CARRITO-   -   -");
+        int contador = 1;
+        for(Candle c : Carrito){
+            System.out.println(contador + ". " +
+                    c.getName() + "; " + c.getShortDescp() + "; "
+                    + c.getAmount());
+            contador++;
+        }
+        System.out.println("-------------------------");
+    }
+
+    public opcionMenuCarrito menuCarrito(){
+        int seleccion;
+        boolean norepetir = false;
+        do {
+            verCarrito();
+            System.out.println("---¿Que quieres hacer?---");
+            System.out.println("1. " + opcionMenuCarrito.AÑADIRVELAS);
+            System.out.println("2. " + opcionMenuCarrito.QUITARVELAS);
+            System.out.println("3. " + opcionMenuCarrito.CONFIRMARCOMPRA);
+            System.out.println("0. " + opcionMenuCarrito.SALIRCARRITO);
+            System.out.println("-------------------------");
+            seleccion = sc.nextInt();
+            if(seleccion == 1 || seleccion == 2 || seleccion == 3 || seleccion == 0){
+                norepetir = true;
+            }
+        } while(!norepetir);
+        return opcionMenuCarrito.values()[seleccion];
     }
 }

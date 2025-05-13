@@ -64,7 +64,23 @@ public class Candle {
         this.candleCode = candleCode;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
     //Añadir y Restar Velas
+
+    public void AñadirCantidad(int n){
+        amount = amount + n;
+    }
+
+    public void RestarCantidad(int n){
+        amount = amount - n;
+    }
 
     public String ToString() {
         return name + " (" + shortDescp + ") Unidades: " + amount;
