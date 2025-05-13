@@ -182,8 +182,6 @@ public class GestionMenu {
         System.out.println(v.getLongDescrp());
         System.out.println("Precio: " + v.getPrice());
         MenuVelasDetallada(v);
-
-
     }
 
     public void verListadoVelas(){
@@ -233,7 +231,20 @@ public class GestionMenu {
         }
         System.out.println("-------------------------");
     }
-
+    /** Esta opción se encargara de devolver todos los pedidos que ha hecho
+     * */
+    public void verPedido(Cliente cliente)
+    {
+        List<Order> orders = cliente.getOrdersClient();
+        if(orders.isEmpty()){ // si no hay pedidos
+            System.out.println("You not have orders");
+        } else {
+            System.out.println(" Your orders: ");
+            for(Order order: orders){
+                order.toString();
+            }
+        }
+    }
     public opcionMenuCarrito menuCarrito(){
         int seleccion;
         boolean norepetir = false;

@@ -71,4 +71,17 @@ public class Cliente extends Usuario{
     public void setSurname(String surname) {
         this.surname = surname;
     }
+    public List<Order> getOrdersClient()
+    {
+        return ordersClient;
+    }
+    @Override
+    public String toString()
+    {
+        return "Client: " + name + " " + surname +
+                "\nEmail: " + email +
+                "\nAdress: " + address +
+                "\nPhone: " + phoneNumber +
+                "\nOrders: " + ordersClient.size();
+    }
 }

@@ -42,4 +42,9 @@ public abstract class Usuario {
     public String ToString(){
         return "email: " + email + " Nombre: " + name;
     }
+
+    public static void guardarUsuario(String fichero, String contenido)
+    {
+
+    }
 }
