@@ -75,6 +75,10 @@ public class Cliente extends Usuario{
     {
         return ordersClient;
     }
+
+    public void setNewOrderInList(Order o){
+        ordersClient.add(o);
+    }
     @Override
     public String toString()
     {
