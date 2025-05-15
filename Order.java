@@ -60,4 +60,14 @@ public class Order {
         }
         return result;
     }
+
+
+    public String AFichero() {
+        String result = codeOrder + ";" + totalPrice + ";" + orderDate + ";" + client + ";";
+
+        for (var vela : candlesOrder.entrySet()) {
+            result += vela.getKey().getName() + "=" + vela.getValue() + ",";
+        }
+        return result;
+    }
 }
