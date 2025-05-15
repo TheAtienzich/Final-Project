@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -361,12 +362,43 @@ public class GestionMenu {
 
         System.out.println("Expiration Date: ");
         FillDate();
-
-        System.out.println("Are you sure of your purchase?(Y/N)");
-        if(sc.nextLine() == "Y"){
-
-        }
+        ConfirmarPedido();
     }
+
+    public double CalculateTotalPrice(){
+        double totalPrice = 0;
+        for(Candle c : Carrito){
+            totalPrice = c.getPrice() * c.getAmount();
+        }
+
+        return totalPrice;
+    }
+
+    public void ConfirmarPedido(){
+        System.out.println("Are you sure of your purchase?(Y/N)");
+        boolean letraCorrecta = false;
+        do {
+            if (sc.nextLine() == "Y") {
+                letraCorrecta = true;
+                System.out.println("Su pedido le llegara pronto");
+                System.out.println("Gracias por su compra!");
+                Calendar fechaHoraActual = Calendar.getInstance();
+                clienteSesionActual.setNewOrderInList(new Order(CalculateTotalPrice(),
+                        fechaHoraActual, clienteSesionActual ));
+            } else if (sc.nextLine() == "N") {
+                letraCorrecta = true;
+                System.out.println("Tomese su tiempo no importa");
+                System.out.println("Gracias por confiar en nosotros!");
+                menuCarrito();
+            } else {
+                System.out.println("Intente poner la letra indicada, por favor");
+            }
+        }while(!letraCorrecta);
+    }
+
+    //--------------------------------------------
+
+    //--------------------------------------------
 
     public void FillDate(){
         LocalDate date;
