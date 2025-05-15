@@ -103,13 +103,14 @@ public class GestionMenu {
         System.out.print("Email: ");
         String email = sc.nextLine();
         //Comprobamos que el email incluya @gmail o hotmail o OnFire(correo empresa)
-        boolean emailValido = Usuario.emailValido(email);
+        /*boolean emailValido = Usuario.emailValido(email);
         do{
             System.out.println("Invalid Email");
             System.out.print("Correo: ");
             email = sc.nextLine();
             emailValido = Usuario.emailValido(email);
-        }while(!emailValido);
+        }while(!emailValido);*/
+
         String password = sc.nextLine();
         Cliente c = new Cliente(name, surname, email, password);
         clientsApp.add(c);
@@ -122,8 +123,44 @@ public class GestionMenu {
         String passWord;
         Cliente c = null;
         boolean emailFound = false, passwordCorrect = false;
+
+        System.out.println("Please enter email");
         email = sc.nextLine();
+        if( Usuario.emailValido2(email)==true)
+        {
+            emailFound=true;
+        }
+
+        if(!emailFound) {
+            do {
+                System.out.println("Email not found in database, try another");
+                for (Cliente c1 : clientsApp) {
+                    if (c1.getEmail().equals(email)) {
+                        c = c1;
+                        emailFound = true;
+                    }
+                }
+            /*if(!emailFound){
+                System.out.println("Email not found in database, try another");
+            }*/
+            } while (!emailFound);
+        }
+
+        System.out.println("Please enter password");
+        passWord = sc.nextLine();
         do {
+            if(passWord.equals(c.getPassWord())) {
+                passwordCorrect = true;
+            }
+            else{
+                System.out.println("Incorrect password");
+            }
+        }while(!passwordCorrect);
+
+        System.out.println("Bienvenido " + c.getName());
+    }
+
+        /*email = sc.nextLine();do {
             for (Cliente c1 : clientsApp) {
                 if (c1.getEmail().equals(email)) {
                     c = c1;
@@ -146,7 +183,11 @@ public class GestionMenu {
 
         System.out.println("Bienvenido " + c.getName());
         clienteSesionActual = c;
-    }
+    }*/
+
+
+
+
     //--------------------------------------------
 
 

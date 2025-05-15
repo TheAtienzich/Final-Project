@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -28,6 +29,25 @@ public abstract class Usuario {
         Pattern p = Pattern.compile("^[a-zA-Z0-9._%+-]+@(gmail\\.com|@hotmail\\.com|@onFire\\.com)$");
         Matcher m = p.matcher(email);
         return m.matches();
+    }
+
+    public static boolean emailValido2(String email){
+        Pattern p = Pattern.compile("^[a-zA-Z0-9._%+-]+@(gmail\\.com|@hotmail\\.com|@onFire\\.com)$");
+        Matcher m = p.matcher(email);
+
+        if(!m.find())
+        {
+            String email2="0";
+            do {
+
+                System.out.println("Invalid email,Try again...");
+                Scanner sc = new Scanner(System.in);
+                email2 = sc.nextLine();
+            }
+            while(!m.find());
+            return false;
+        }
+        return true;
     }
 
     public void setEmail(String email) {
