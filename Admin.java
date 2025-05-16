@@ -16,4 +16,7 @@ public class Admin extends Usuario {
     public String ToString(){
         return super.ToString() + " Clave Empresa: " + claveEmpresa;
     }
+    // Agregar velas, y borrar velas
+    //
+
 }

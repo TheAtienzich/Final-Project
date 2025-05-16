@@ -144,7 +144,18 @@ public class GestionMenu {
         return c;
     }
     //--------------------------------------------
+    public Admin IniciarSesionAdmin()
+    {
+        Admin admin = null;
+        System.out.println("PIN:" );
+        String pin = sc.nextLine();
 
+        for(Admin a : admin)
+        {
+
+        }
+
+    }
 
     //Opcion ver velas
     public opcionMenuVelasDetallado MenuVelasDetallada(Candle c) {
@@ -228,8 +239,6 @@ public class GestionMenu {
         }
         System.out.println("-------------------------");
     }
-    /** Esta opción se encargara de devolver todos los pedidos que ha hecho
-     * */
     public void verPedido(Cliente cliente)
     {
         List<Order> orders = cliente.getOrdersClient();
