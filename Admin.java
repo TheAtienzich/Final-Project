@@ -18,9 +18,15 @@ public class Admin extends Usuario {
         return super.ToString() + " Clave Empresa: " + claveEmpresa;
     }
 
-    //Add Candle
-    public static void addCandle()
+    //View Candle
+    public static void viewCandle(List<Candle>candles)
     {
-
+        for(Candle c: candles)
+        {
+            System.out.println("Name:"+c.getName()+"("+c.getCandleCode()+")");
+            System.out.println("Description:"+c.getShortDescp());
+            System.out.println("Candle Fragrance:"+c.getCandleFragrance());
+            System.out.println("Price"+c.getPrice());
+        }
     }
 }
