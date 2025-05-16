@@ -74,7 +74,7 @@ public class Candle {
 
     //Añadir y Restar Velas
 
-    public void AñadirCantidad(int n){
+    public void AnyadirCantidad(int n){
         amount = amount + n;
     }
 

@@ -6,17 +6,16 @@ public class Main {
         GestionMenu g = new GestionMenu();
         GestionMenu.opcionMenuBienvenida opcion1;
         GestionMenu.opcionMenuCliente opcionC;
-        Cliente c = null;
         do{
             ///
             opcion1 = g.MenuBienvenida();
             switch(opcion1)
             {
                 case REGISTRARSE:
-                    c = g.Registrarse();
+                    g.Registrarse();
                     break;
                 case INICIARSESION:
-                    c = g.IniciarSesion();
+                    g.IniciarSesion();
                     break;
                 case SALIR:
                     System.out.println("Thanks for your visit");
