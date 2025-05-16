@@ -17,16 +17,38 @@ public class Admin extends Usuario {
     public String ToString(){
         return super.ToString() + " Clave Empresa: " + claveEmpresa;
     }
-
-    //View Candle
-    public static void viewCandle(List<Candle>candles)
+    public static void showClients(List<Cliente>clientes)
     {
-        for(Candle c: candles)
+        System.out.println("List of clients: ");
+        for(Cliente c : clientes)
         {
-            System.out.println("Name:"+c.getName()+"("+c.getCandleCode()+")");
-            System.out.println("Description:"+c.getShortDescp());
-            System.out.println("Candle Fragrance:"+c.getCandleFragrance());
-            System.out.println("Price"+c.getPrice());
+            System.out.println(c);
+            System.out.println("------------");
+        }
+    }
+    public static void showOrders(List<Cliente> clientes)
+    {
+        for(Cliente c : clientes)
+        {
+            System.out.println("Client: " + c.getName());
+            System.out.println("Email: " + c.getEmail());
+            System.out.println("Pedidos: ");
+            for (Order o: c.getOrdersClient())
+            {
+                System.out.println(o);
+            }
+            System.out.println("==========");
+        }
+    }
+
+    public static void showCandle(List<Candle>candles)
+    {
+        for(Candle c:candles)
+        {
+            System.out.println("Name":+c.getName()+"("+c.getcandleCode+")");
+            System.out.println("shortDescp":+c.getShortDescp());
+            System.out.println("CandleFragrance":+c.getCandleFragrance());
+            System.out.println("Price":+c.getPrice());
         }
     }
 }
