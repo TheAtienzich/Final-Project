@@ -17,4 +17,10 @@ public class Admin extends Usuario {
     public String ToString(){
         return super.ToString() + " Clave Empresa: " + claveEmpresa;
     }
+
+    //Add Candle
+    public static void addCandle()
+    {
+
+    }
 }
