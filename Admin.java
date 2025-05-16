@@ -19,5 +19,10 @@ public class Admin extends Usuario {
     }
     // Agregar velas, y borrar velas
     //
+    @Override
+    public String VerAdmin()
+    {
+                return super.ToString();
+    }
 
 }
