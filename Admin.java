@@ -51,4 +51,33 @@ public class Admin extends Usuario {
             System.out.println("Price":+c.getPrice());
         }
     }
+
+    //LoadAdmin
+    public static List<Admin>LoadAdmin(List<Admin>admins)
+    {
+        List<Admin>admins=new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] parts = linea.split(";");
+                if (parts.length >= 4) {
+                    String email = parts[0];
+                    String contrasenya = parts[1];
+                    String nombre = parts[2];
+                    String claveEmpresa = parts[3];
+
+                    Admin admin = new Admin(email, contrasenya, nombre);
+                    admin.setClaveEmpresa(claveEmpresa);
+                    admins.add(admin);
+                }
+            }
+        }
+        catch(IOException e)
+        {
+            System.err.println("Error:"+e.getMessage());
+        }
+        return admins;
+    }
+
+
 }
