@@ -197,9 +197,8 @@ public class GestionMenu {
 
         for(Admin a : admin)
         {
-
+            // el admin inicia sesion ocn el pin y contraseña
         }
-
     }
 
     //Opcion ver velas

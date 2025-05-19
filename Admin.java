@@ -92,6 +92,4 @@ public class Admin extends Usuario {
         }
         writer.close();
     }
-
-
 }
