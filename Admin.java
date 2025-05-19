@@ -5,7 +5,7 @@ import java.util.*;
 
 public class Admin extends Usuario {
     private String claveEmpresa;
-    public const  String filename="admin.txt";
+    public static final String FILENAME = "admin.txt";
     public Admin(String email, String contrasenya, String nombre){
         super(email, contrasenya, nombre);
         this.claveEmpresa = "000000F";
@@ -59,7 +59,7 @@ public class Admin extends Usuario {
     public static List<Admin>LoadAdmin()
     {
         List<Admin>admins=new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
             String linea;
             while ((linea = br.readLine()) != null) {
                 String[] parts = linea.split(";");
