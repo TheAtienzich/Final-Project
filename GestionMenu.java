@@ -94,27 +94,31 @@ public class GestionMenu {
     }
 
     public void Registrarse(){
+        sc.nextLine();
+
         System.out.print("Name: ");
         String name = sc.nextLine();
-        System.out.println();
         System.out.print("Surname: ");
         String surname = sc.nextLine();
         System.out.println();
         System.out.print("Email: ");
         String email = sc.nextLine();
-        //Comprobamos que el email incluya @gmail o hotmail o OnFire(correo empresa)
-        /*boolean emailValido = Usuario.emailValido(email);
-        do{
-            System.out.println("Invalid Email");
-            System.out.print("Correo: ");
-            email = sc.nextLine();
-            emailValido = Usuario.emailValido(email);
-        }while(!emailValido);*/
 
+        //Comprobamos que el email incluya @gmail o hotmail o OnFire(correo empresa)
+        //boolean emailValido = Usuario.emailValido2(email);
+        /*do{
+            System.out.println("Invalid Email");
+            System.out.print("Write again email: ");
+            email = sc.nextLine();
+            emailValido = Usuario.emailValido2(email);
+        }while(!emailValido);
+        */
+        System.out.print("Password: ");
         String password = sc.nextLine();
+
         Cliente c = new Cliente(name, surname, email, password);
         clientsApp.add(c);
-        System.out.println("Bienvenido " + c.getName());
+        System.out.println("Bienvenido " + name);
         clienteSesionActual = c;
     }
 
@@ -218,13 +222,14 @@ public class GestionMenu {
 
     //--------------------------------------------
     public Admin IniciarSesionAdmin() {
-        Admin admin = null;
+       List<Admin>admins=Admin.LoadAdmin();
         System.out.println("PIN:" );
         String pin = sc.nextLine();
 
-        for(Admin a : admin) {
+        for(Admin a : admins) {
             // el admin inicia sesion ocn el pin y contraseña
         }
+        return null;
     }
 
     //Opcion ver velas
