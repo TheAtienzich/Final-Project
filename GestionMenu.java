@@ -100,17 +100,18 @@ public class GestionMenu {
         String name = sc.nextLine();
         System.out.print("Surname: ");
         String surname = sc.nextLine();
-        System.out.println();
         System.out.print("Email: ");
         String email = sc.nextLine();
 
         //Comprobamos que el email incluya @gmail o hotmail o OnFire(correo empresa)
         //boolean emailValido = Usuario.emailValido2(email);
-        /*do{
+        /*
+        boolean emailValido = Usuario.emailValido(email);
+        do{
             System.out.println("Invalid Email");
             System.out.print("Write again email: ");
             email = sc.nextLine();
-            emailValido = Usuario.emailValido2(email);
+            emailValido = Usuario.emailValido(email);
         }while(!emailValido);
         */
         System.out.print("Password: ");
@@ -124,6 +125,7 @@ public class GestionMenu {
 
     public void IniciarSesion(){
 
+        sc.nextLine();
         System.out.println("Enter email: ");
         String email = sc.nextLine();
         System.out.println("Enter password: ");
