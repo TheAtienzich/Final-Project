@@ -119,7 +119,20 @@ public class GestionMenu {
     }
 
     public void IniciarSesion(){
-        String email;
+
+        System.out.println("Enter email: ");
+        String email = sc.nextLine();
+        System.out.println("Enter password: ");
+        String pass = sc.nextLine();
+
+        try {
+            Cliente client = homeSessionCustomer(clientsApp, email , pass);
+            System.out.println("Welcome: " + client.getName());
+        } catch(Exception e){
+            System.out.println("Error");
+        }
+
+       /* String email;
         String passWord;
         Cliente c = null;
         boolean emailFound = false, passwordCorrect = false;
@@ -142,7 +155,7 @@ public class GestionMenu {
                 }
             /*if(!emailFound){
                 System.out.println("Email not found in database, try another");
-            }*/
+            }
             } while (!emailFound);
         }
 
@@ -157,7 +170,7 @@ public class GestionMenu {
             }
         }while(!passwordCorrect);
 
-        System.out.println("Bienvenido " + c.getName());
+        System.out.println("Bienvenido " + c.getName());*/
     }
 
         /*email = sc.nextLine();do {
@@ -184,19 +197,32 @@ public class GestionMenu {
         System.out.println("Bienvenido " + c.getName());
         clienteSesionActual = c;
     }*/
-
+    /** Function : that receives parameters and returns the result for
+     * the test to work properly * */
+    public Cliente homeSessionCustomer(List<Cliente> clients,
+                                       String email, String pass) throws Exception {
+        Cliente customerFind = null;
+        for(Cliente c : clients){
+            if(c.getEmail().equals(email)){
+                if(c.getPassWord().equals(pass)){
+                    return c;
+                } else {
+                    throw new Exception("Incorrect password");
+                }
+            }
+        }
+        throw new Exception("Email no found");
+    }
 
 
 
     //--------------------------------------------
-    public Admin IniciarSesionAdmin()
-    {
+    public Admin IniciarSesionAdmin() {
         Admin admin = null;
         System.out.println("PIN:" );
         String pin = sc.nextLine();
 
-        for(Admin a : admin)
-        {
+        for(Admin a : admin) {
             // el admin inicia sesion ocn el pin y contraseña
         }
     }
