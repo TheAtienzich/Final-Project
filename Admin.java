@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class Admin extends Usuario {
@@ -81,7 +79,19 @@ public class Admin extends Usuario {
         }
         return admins;
     }
-    
+
+    //Save Admin
+    public static void saveAdmin(List<Admin>admins)throws IOException
+    {
+        BufferedWriter writer=new BufferedWriter(new FileWriter(FILENAME));
+
+        for(Admin a:admins)
+        {
+            writer.write(a.AFichero());
+            writer.newLine();
+        }
+        writer.close();
+    }
 
 
 }
