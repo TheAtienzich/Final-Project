@@ -1,8 +1,11 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class Admin extends Usuario {
     private String claveEmpresa;
-
+    public const  String filename="admin.txt";
     public Admin(String email, String contrasenya, String nombre){
         super(email, contrasenya, nombre);
         this.claveEmpresa = "000000F";
@@ -45,15 +48,15 @@ public class Admin extends Usuario {
     {
         for(Candle c:candles)
         {
-            System.out.println("Name":+c.getName()+"("+c.getcandleCode+")");
-            System.out.println("shortDescp":+c.getShortDescp());
-            System.out.println("CandleFragrance":+c.getCandleFragrance());
-            System.out.println("Price":+c.getPrice());
+            System.out.println("Name:"+c.getName()+"("+c.getCandleCode()+")");
+            System.out.println("shortDescp:"+c.getShortDescp());
+            System.out.println("CandleFragrance:"+c.getCandleFragrance());
+            System.out.println("Price:"+c.getPrice());
         }
     }
 
     //LoadAdmin
-    public static List<Admin>LoadAdmin(List<Admin>admins)
+    public static List<Admin>LoadAdmin()
     {
         List<Admin>admins=new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -67,7 +70,7 @@ public class Admin extends Usuario {
                     String claveEmpresa = parts[3];
 
                     Admin admin = new Admin(email, contrasenya, nombre);
-                    admin.setClaveEmpresa(claveEmpresa);
+
                     admins.add(admin);
                 }
             }
@@ -78,6 +81,7 @@ public class Admin extends Usuario {
         }
         return admins;
     }
+    
 
 
 }
