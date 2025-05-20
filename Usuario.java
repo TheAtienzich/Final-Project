@@ -12,7 +12,7 @@ public abstract class Usuario {
         this.passWord = passWord;
         this.name = name;
     }
-
+    public String getName(){return name;}
     public String getPassWord() {
         return passWord;
     }

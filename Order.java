@@ -4,11 +4,11 @@ public class Order {
     private String codeOrder;
     private double totalPrice;
     private Calendar orderDate;
-    private Cliente client;
+    private Client client;
     private HashMap<Candle, String> candlesOrder;
 
     // Aqui quite el codigo de pedido, por que se genera automaticamente
-    public Order(double totalPrice, Calendar orderDate, Cliente client) {
+    public Order(double totalPrice, Calendar orderDate, Client client) {
         this.codeOrder = GeneradorNumeroPedido.getInstancia().generarNumeroPedido();
         this.totalPrice = totalPrice;
         this.orderDate = orderDate;
@@ -39,11 +39,11 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public Cliente getClient() {
+    public Client getClient() {
         return client;
     }
 
-    public void setClientName(Cliente client) {
+    public void setClientName(Client client) {
         this.client = client;
     }
     // Nuevo metodo implementado para poder mostrar los pedidos

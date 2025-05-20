@@ -8,6 +8,10 @@ public class Admin extends Usuario {
         super(email, contrasenya, nombre);
         this.companyKey = companyKey;
     }
+    public Admin(String pin, String pass) {
+        super("", pass, "");
+        this.companyKey = companyKey;
+    }
     public String getCompanyKey(){return companyKey;}
     @Override
     public String AFichero(){
@@ -18,18 +22,18 @@ public class Admin extends Usuario {
     public String ToString(){
         return super.ToString() + " Company key: " + companyKey;
     }
-    public static void showClients(List<Cliente>clientes)
+    public static void showClients(List<Client>clientes)
     {
         System.out.println("List of clients: ");
-        for(Cliente c : clientes)
+        for(Client c : clientes)
         {
             System.out.println(c);
             System.out.println("------------");
         }
     }
-    public static void showOrders(List<Cliente> clientes)
+    public static void showOrders(List<Client> clientes)
     {
-        for(Cliente c : clientes)
+        for(Client c : clientes)
         {
             System.out.println("Client: " + c.getName());
             System.out.println("Email: " + c.getEmail());
@@ -93,7 +97,7 @@ public class Admin extends Usuario {
         writer.close();
     }
     /** Method for checking the admin login **/
-    public Admin homeSessionAdmin(List<Admin> admins, String companyKey , String pass) throws Exception {
+    public static Admin homeSessionAdmin(List<Admin> admins, String companyKey , String pass) throws Exception {
         for(Admin a: admins){
             if(a.getCompanyKey().equals(companyKey) && a.getPassWord().equals(pass)){
                 return a;

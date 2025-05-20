@@ -1,18 +1,16 @@
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 public class GestionMenu {
     Scanner sc = new Scanner(System.in);
     private final List<Candle> stockCandles =  new ArrayList<>();
     private final Fragance[] stockFragances = new Fragance[100];
     //En cada posicion de esa lista se va a guardar un objeto vela (Se usara en la primera opcion de "Mostrar velas")
-    private final List<Cliente> clientsApp = new ArrayList<>();
+    private final List<Client> clientsApp = new ArrayList<>();
+    private final List<Admin> adminsApp = new ArrayList<>();
     private final List<Candle> Carrito =  new ArrayList();
-    private Cliente clienteSesionActual = null;
+    private Client clienteSesionActual = null;
 
     enum opcionMenuBienvenida { SALIR, INICIARSESION, REGISTRARSE }
     enum opcionMenuCliente { SALIR, VERCARRITO, VERPEDIDOS, VERVELAS }
@@ -112,13 +110,13 @@ public class GestionMenu {
         }while(!emailValido);*/
 
         String password = sc.nextLine();
-        Cliente c = new Cliente(name, surname, email, password);
+        Client c = new Client(name, surname, email, password);
         clientsApp.add(c);
         System.out.println("Bienvenido " + c.getName());
         clienteSesionActual = c;
     }
 
-    public void IniciarSesion(){
+    public void homeSessionCustomer() {
 
         System.out.println("Enter email: ");
         String email = sc.nextLine();
@@ -126,106 +124,31 @@ public class GestionMenu {
         String pass = sc.nextLine();
 
         try {
-            Cliente client = homeSessionCustomer(clientsApp, email , pass);
+            Client client = Client.homeSessionCustomer(clientsApp, email, pass);
             System.out.println("Welcome: " + client.getName());
-        } catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Error");
         }
-
-       /* String email;
-        String passWord;
-        Cliente c = null;
-        boolean emailFound = false, passwordCorrect = false;
-
-        System.out.println("Please enter email");
-        email = sc.nextLine();
-        if( Usuario.emailValido2(email)==true)
-        {
-            emailFound=true;
-        }
-
-        if(!emailFound) {
-            do {
-                System.out.println("Email not found in database, try another");
-                for (Cliente c1 : clientsApp) {
-                    if (c1.getEmail().equals(email)) {
-                        c = c1;
-                        emailFound = true;
-                    }
-                }
-            /*if(!emailFound){
-                System.out.println("Email not found in database, try another");
-            }
-            } while (!emailFound);
-        }
-
-        System.out.println("Please enter password");
-        passWord = sc.nextLine();
-        do {
-            if(passWord.equals(c.getPassWord())) {
-                passwordCorrect = true;
-            }
-            else{
-                System.out.println("Incorrect password");
-            }
-        }while(!passwordCorrect);
-
-        System.out.println("Bienvenido " + c.getName());*/
     }
 
-        /*email = sc.nextLine();do {
-            for (Cliente c1 : clientsApp) {
-                if (c1.getEmail().equals(email)) {
-                    c = c1;
-                    emailFound = true;
-                }
-            }
-            if(!emailFound){
-                System.out.println("Email not found in database, try another");
-            }
-        }while(!emailFound);
-        passWord = sc.nextLine();
-        do {
-            if(passWord.equals(c.getPassWord())) {
-                passwordCorrect = true;
-            }
-            else{
-                System.out.println("Incorrect password");
-            }
-        }while(!passwordCorrect);
-
-        System.out.println("Bienvenido " + c.getName());
-        clienteSesionActual = c;
-    }*/
-    /** Function : that receives parameters and returns the result for
-     * the test to work properly * */
-    public Cliente homeSessionCustomer(List<Cliente> clients,
-                                       String email, String pass) throws Exception {
-        Cliente customerFind = null;
-        for(Cliente c : clients){
-            if(c.getEmail().equals(email)){
-                if(c.getPassWord().equals(pass)){
-                    return c;
-                } else {
-                    throw new Exception("Incorrect password");
-                }
-            }
-        }
-        throw new Exception("Email no found");
-    }
-
-
-
-    //--------------------------------------------
-    public Admin IniciarSesionAdmin() {
-        Admin admin = null;
-        System.out.println("PIN:" );
+    /**
+     * Function: function that receives input for the administrator login */
+    public void homeSessionAdmin(){
+        sc.nextLine();
+        System.out.println("Enter PIN: ");
         String pin = sc.nextLine();
+        System.out.println("Enter password: ");
+        String pass = sc.nextLine();
 
-        for(Admin a : admin) {
-            // el admin inicia sesion ocn el pin y contraseña
+        try{
+            Admin admin = Admin.homeSessionAdmin(adminsApp, pin, pass);
+            System.out.println("Welcome! " + admin.getName());
+        } catch(Exception e){
+            System.out.println("Error, pass or pin incorrects");
         }
     }
+    //--------------------------------------------
+
 
     //Opcion ver velas
     public opcionMenuVelasDetallado MenuVelasDetallada(Candle c) {
@@ -309,7 +232,7 @@ public class GestionMenu {
         }
         System.out.println("-------------------------");
     }
-    public void verPedido(Cliente cliente)
+    public void verPedido(Client cliente)
     {
         List<Order> orders = cliente.getOrdersClient();
         if(orders.isEmpty()){ // si no hay pedidos
@@ -452,15 +375,15 @@ public class GestionMenu {
 
 
     //Search Client
-    public static Cliente SearchClient(List<Usuario>usuarios,String email)
+    public static Client SearchClient(List<Usuario>usuarios, String email)
     {
-        Cliente cliente=null;
+        Client cliente=null;
 
         for(Usuario u:usuarios)
         {
-            if(u instanceof Cliente) //Check if is type of client
+            if(u instanceof Client) //Check if is type of client
             {
-                Cliente c=(Cliente) u;
+                Client c=(Client) u;
                 if(email.equals(c.getEmail()))
                 {
                     cliente=c;

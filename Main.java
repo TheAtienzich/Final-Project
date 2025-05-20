@@ -3,9 +3,12 @@ public class Main {
     Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+        List<Admin> admins = new ArrayList<>();
         GestionMenu g = new GestionMenu();
         GestionMenu.opcionMenuBienvenida opcion1;
         GestionMenu.opcionMenuCliente opcionC;
+        Admin admin1 = new Admin("Jorge.Reyes@OnFire.com","$1Contraseña1$","Jorge Reyes",
+                "PIN01");
         do{
             ///
             opcion1 = g.MenuBienvenida();
@@ -15,7 +18,7 @@ public class Main {
                     g.Registrarse();
                     break;
                 case INICIARSESION:
-                    g.IniciarSesion();
+                    g.homeSessionCustomer();
                     break;
                 case SALIR:
                     System.out.println("Thanks for your visit");
