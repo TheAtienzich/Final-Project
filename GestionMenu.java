@@ -483,6 +483,19 @@ public class GestionMenu {
         }
         return orderClient;
     }
+
+    //Search Fragance
+    static Fragance searchFragance(List<Fragance>fragances,String id)
+    {
+        for(Fragance f:fragances)
+        {
+            if(f.getID().equals(id))
+            {
+                return f;
+            }
+        }
+        return null;//if not found
+    }
 }
 
 
