@@ -116,39 +116,6 @@ public class GestionMenu {
         clienteSesionActual = c;
     }
 
-    public void homeSessionCustomer() {
-
-        System.out.println("Enter email: ");
-        String email = sc.nextLine();
-        System.out.println("Enter password: ");
-        String pass = sc.nextLine();
-
-        try {
-            Client client = Client.homeSessionCustomer(clientsApp, email, pass);
-            System.out.println("Welcome: " + client.getName());
-        } catch (Exception e) {
-            System.out.println("Error");
-        }
-    }
-
-    /**
-     * Function: function that receives input for the administrator login */
-    public void homeSessionAdmin(){
-        sc.nextLine();
-        System.out.println("Enter PIN: ");
-        String pin = sc.nextLine();
-        System.out.println("Enter password: ");
-        String pass = sc.nextLine();
-
-        try{
-            Admin admin = Admin.homeSessionAdmin(adminsApp, pin, pass);
-            System.out.println("Welcome! " + admin.getName());
-        } catch(Exception e){
-            System.out.println("Error, pass or pin incorrects");
-        }
-    }
-    //--------------------------------------------
-
 
     //Opcion ver velas
     public opcionMenuVelasDetallado MenuVelasDetallada(Candle c) {

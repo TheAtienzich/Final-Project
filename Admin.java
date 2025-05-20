@@ -96,13 +96,4 @@ public class Admin extends Usuario {
         }
         writer.close();
     }
-    /** Method for checking the admin login **/
-    public static Admin homeSessionAdmin(List<Admin> admins, String companyKey , String pass) throws Exception {
-        for(Admin a: admins){
-            if(a.getCompanyKey().equals(companyKey) && a.getPassWord().equals(pass)){
-                return a;
-            }
-        }
-        throw new Exception("PIN or password incorrects");
-    }
 }

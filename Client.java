@@ -88,21 +88,4 @@ public class Client extends Usuario{
                 "\nPhone: " + phoneNumber +
                 "\nOrders: " + ordersClient.size();
     }
-    /** Function : that receives parameters and returns the result for
-     * the test to work properly * */
-    public static Client homeSessionCustomer(List<Client> clients,
-                                             String email, String pass) throws Exception {
-        Client customerFind = null;
-        for(Client c : clients){
-            if(c.getEmail().equals(email)){
-                if(c.getPassWord().equals(pass)){
-                    return c;
-                } else {
-                    throw new Exception("Incorrect password");
-                }
-            }
-        }
-        throw new Exception("Email no found");
-    }
-
 }
