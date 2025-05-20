@@ -469,6 +469,20 @@ public class GestionMenu {
         }
         return  cliente;
     }
+
+    //Search Order
+    public static List<Order>searchOrder(List<Order>orders,String email)
+    {
+        List<Order>orderClient=null;
+        for(Order o:orders)
+        {
+            if(o.getClient().getEmail().equals(email))//Check if the email is same
+            {
+                orderClient.add(o);
+            }
+        }
+        return orderClient;
+    }
 }
 
 
