@@ -2,21 +2,21 @@ import java.io.*;
 import java.util.*;
 
 public class Admin extends Usuario {
-    private String claveEmpresa;
+    private String companyKey;
     public static final String FILENAME = "admin.txt";
-    public Admin(String email, String contrasenya, String nombre){
+    public Admin(String email, String contrasenya, String nombre, String companyKey){
         super(email, contrasenya, nombre);
-        this.claveEmpresa = "000000F";
+        this.companyKey = companyKey;
     }
-
+    public String getCompanyKey(){return companyKey;}
     @Override
     public String AFichero(){
-        return super.AFichero() + ";" +  claveEmpresa;
+        return super.AFichero() + ";" +  companyKey;
     }
 
     @Override
     public String ToString(){
-        return super.ToString() + " Clave Empresa: " + claveEmpresa;
+        return super.ToString() + " Company key: " + companyKey;
     }
     public static void showClients(List<Cliente>clientes)
     {
@@ -65,9 +65,9 @@ public class Admin extends Usuario {
                     String email = parts[0];
                     String contrasenya = parts[1];
                     String nombre = parts[2];
-                    String claveEmpresa = parts[3];
+                    String companyKey = parts[3];
 
-                    Admin admin = new Admin(email, contrasenya, nombre);
+                    Admin admin = new Admin(email, contrasenya, nombre, companyKey);
 
                     admins.add(admin);
                 }
@@ -91,5 +91,14 @@ public class Admin extends Usuario {
             writer.newLine();
         }
         writer.close();
+    }
+    /** Method for checking the admin login **/
+    public Admin homeSessionAdmin(List<Admin> admins, String companyKey , String pass) throws Exception {
+        for(Admin a: admins){
+            if(a.getCompanyKey().equals(companyKey) && a.getPassWord().equals(pass)){
+                return a;
+            }
+        }
+        throw new Exception("PIN or password incorrects");
     }
 }
