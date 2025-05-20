@@ -36,6 +36,4 @@ public class ProductManagement {
             }
         } while(option != 0) ;
     }
-    public boolean verifyCandle(Map<String, Candle> invent, String codeCandle){
-
 }
