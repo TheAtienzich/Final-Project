@@ -456,6 +456,26 @@ public class GestionMenu {
             FillDate();
         }
     }
+
+
+    //Search Client
+    public static Cliente SearchClient(List<Usuario>usuarios,String email)
+    {
+        Cliente cliente=null;
+
+        for(Usuario u:usuarios)
+        {
+            if(u instanceof Cliente) //Check if is type of client
+            {
+                Cliente c=(Cliente) u;
+                if(email.equals(c.getEmail()))
+                {
+                    cliente=c;
+                }
+            }
+        }
+        return  cliente;
+    }
 }
 
 
