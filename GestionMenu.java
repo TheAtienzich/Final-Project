@@ -213,25 +213,18 @@ public class GestionMenu {
         }
         throw new Exception("Email no found");
     }
-    //--------------------------------------------
-  /*  public Admin IniciarSesionAdmin() {
-        Admin admin = null;
 
+
+
+    //--------------------------------------------
+    public Admin IniciarSesionAdmin() {
+        Admin admin = null;
         System.out.println("PIN:" );
         String pin = sc.nextLine();
 
         for(Admin a : admin) {
             // el admin inicia sesion ocn el pin y contraseña
         }
-    }*/
-    /** Administrator login**/
-    public Admin homeSessionAdmin(List<Admin> admin) {
-        System.out.println("Enter PIN: ");
-        String PIN = sc.nextLine();
-        System.out.println("Enter password: ");
-        String pass = sc.nextLine();
-
-        for(Admin c: ad)
     }
 
     //Opcion ver velas
