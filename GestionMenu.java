@@ -359,6 +359,57 @@ public class GestionMenu {
         }
         return  cliente;
     }
+
+    //Search Order
+    public static List<Order>searchOrder(List<Order>orders,String email)
+    {
+        List<Order>orderClient=null;
+        for(Order o:orders)
+        {
+            if(o.getClient().getEmail().equals(email))//Check if the email is same
+            {
+                orderClient.add(o);
+            }
+        }
+        return orderClient;
+    }
+
+    //Search Fragance
+    public static Fragance searchFragance(List<Fragance>fragances,String id)
+    {
+        for(Fragance f:fragances)
+        {
+            if(f.getID().equals(id))
+            {
+                return f;
+            }
+        }
+        //if not found
+        return null;
+    }
+
+    //Check User
+    public static boolean checkUser(List<Usuario>usuarios,String email,String password)
+    {
+        for(Usuario u :usuarios)
+        {
+            if(u.getEmail().equals(email))
+            {
+                if(u.getPassWord().equals(password))
+                {
+                    return  true;
+                }
+                else{
+                    System.out.println("The password is incorrect");
+                    return false;
+                }
+            }
+        }
+        System.out.println("Not exist User");
+        return false;
+    }
+
+
 }
 
 
