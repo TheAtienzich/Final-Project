@@ -2,6 +2,7 @@ import java.util.*;
 public class ProductManagement {
     static Scanner sc = new Scanner(System.in);
     private List<Candle> candles = new ArrayList<>();
+    private HashMap<Candle, String> candlesOrder;
 
     // Y Tambien se puede implementar ver stock
     public void adminStockMenu(Map<String, Candle> invent){
@@ -33,7 +34,29 @@ public class ProductManagement {
                     } else {
                         System.out.println("Incorrect code candle");
                     }
+                case 2:
+                    reduceCandle(candlesOrder);
             }
         } while(option != 0) ;
+    }
+
+    //Reduce the candle
+    public void reduceCandle(HashMap<Candle, String> candlesOrder)
+    {
+        System.out.println("Write the candle's code:");
+        String codeCandle= sc.nextLine();
+        //Check if exist
+        Candle candle=verifyCandle(candlesOrder,codeCandle);
+        candlesOrder.remove(candle);
+    }
+
+    public Candle verifyCandle(HashMap<Candle, String> candlesOrder,String codeCandle)
+    {
+        for (Candle candle : candlesOrder.keySet()) {
+            if (codeCandle.equals(candle.getCandleCode())) {
+                return candle;
+            }
+        }
+        return null;
     }
 }
