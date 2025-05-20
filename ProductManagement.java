@@ -4,7 +4,7 @@ public class ProductManagement {
     private List<Candle> candles = new ArrayList<>();
 
     // Y Tambien se puede implementar ver stock
-    public void adminStockMenu(Candle c){
+    public void adminStockMenu(Map<String, Candle> invent){
         int option;
         String codeCandle;
         Candle candle = null;
@@ -16,14 +16,18 @@ public class ProductManagement {
             System.out.println("1. Add candles ");
             System.out.println("2. Substract candles ");
             option = sc.nextInt();
+            sc.nextLine();
 
             switch (option){
                 case 1:
                     System.out.println("Code candle: ");
+                    // mostrar opcioensde velas
                     codeCandle = sc.nextLine();
-                    if(verifyCandle(codeCandle)){
+                    if(invent.containsKey(codeCandle)){
                         System.out.println("Tell me how many candles you want to add: ");
                         count = sc.nextInt();
+                        sc.nextLine();
+                        Candle c = invent.get(codeCandle);
                         candle.AnyadirCantidad(count);
                         System.out.println("Candle successfully");
                     } else {
@@ -32,12 +36,6 @@ public class ProductManagement {
             }
         } while(option != 0) ;
     }
-    public boolean verifyCandle(String codeCandle){
-        for(Candle c : candles){
-            if(c.getCandleCode().equals(codeCandle)){
-                return true;
-            }
-        }
-        return false;
-    }
+    public boolean verifyCandle(Map<String, Candle> invent, String codeCandle){
+
 }
