@@ -485,7 +485,7 @@ public class GestionMenu {
     }
 
     //Search Fragance
-    static Fragance searchFragance(List<Fragance>fragances,String id)
+    public static Fragance searchFragance(List<Fragance>fragances,String id)
     {
         for(Fragance f:fragances)
         {
@@ -496,6 +496,29 @@ public class GestionMenu {
         }
         return null;//if not found
     }
+
+    //Check User
+    public static boolean checkUser(List<Usuario>usuarios,String email,String password)
+    {
+        for(Usuario u :usuarios)
+        {
+            if(u.getEmail().equals(email))
+            {
+                if(u.getPassWord().equals(password))
+                {
+                    return  true;
+                }
+                else{
+                    System.out.println("The password is incorrect");
+                    return false;
+                }
+            }
+        }
+        System.out.println("Not exist User");
+        return false;
+    }
+
+
 }
 
 
