@@ -1,31 +1,27 @@
 import java.util.*;
 
-public class Cliente extends Usuario{
+public class Client extends Usuario{
     private String name;
     private String surname;
     private String address;
     private int phoneNumber;
-    private String DNI;
     private String postalCode;
     private String province;
     private String locality;
-    private CreditCard creditCardClient;
     private List<Order> ordersClient;
 
-    public Cliente(String name, String surname, String email, String passWord) {
+    public Client(String name, String surname, String email, String passWord) {
         super(email, passWord, name);
         this.surname = surname;
         ordersClient = new ArrayList<>();
     }
 
-
-
-    public CreditCard getCreditCardClient() {
-        return creditCardClient;
+    public String getName() {
+        return name;
     }
 
-    public void setCreditCardClient(CreditCard creditCardClient) {
-        this.creditCardClient = creditCardClient;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLocality() {
@@ -42,14 +38,6 @@ public class Cliente extends Usuario{
 
     public void setProvince(String province) {
         this.province = province;
-    }
-
-    public String getDNI() {
-        return DNI;
-    }
-
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
     }
 
     public String getPostalCode() {
@@ -82,5 +70,22 @@ public class Cliente extends Usuario{
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+    public List<Order> getOrdersClient()
+    {
+        return ordersClient;
+    }
+
+    public void setNewOrderInList(Order o){
+        ordersClient.add(o);
+    }
+    @Override
+    public String toString()
+    {
+        return "Client: " + name + " " + surname +
+                "\nEmail: " + email +
+                "\nAdress: " + address +
+                "\nPhone: " + phoneNumber +
+                "\nOrders: " + ordersClient.size();
     }
 }

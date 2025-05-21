@@ -3,20 +3,22 @@ public class Main {
     Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+        List<Admin> admins = new ArrayList<>();
         GestionMenu g = new GestionMenu();
         GestionMenu.opcionMenuBienvenida opcion1;
         GestionMenu.opcionMenuCliente opcionC;
-        Cliente c = null;
+        Admin admin1 = new Admin("Jorge.Reyes@OnFire.com","$1Contraseña1$","Jorge Reyes",
+                "PIN01");
         do{
             ///
             opcion1 = g.MenuBienvenida();
             switch(opcion1)
             {
                 case REGISTRARSE:
-                    c = g.Registrarse();
+                    g.Registrarse();
                     break;
                 case INICIARSESION:
-                    c = g.IniciarSesion();
+                    g.IniciarSesion();
                     break;
                 case SALIR:
                     System.out.println("Thanks for your visit");

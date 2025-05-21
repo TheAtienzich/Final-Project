@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -11,24 +12,7 @@ public abstract class Usuario {
         this.passWord = passWord;
         this.name = name;
     }
-
-    public String getName() {
-
-        return email;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-
-        return email;
-    }
-
-    public void setEmail(String email) {
-            this.email = email;
-    }
+    public String getName(){return name;}
     public String getPassWord() {
         return passWord;
     }
@@ -36,10 +20,31 @@ public abstract class Usuario {
     public void setPassWord(String passWord) {
         this.passWord = passWord;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
     public static boolean emailValido(String email){
         Pattern p = Pattern.compile("^[a-zA-Z0-9._%+-]+@(gmail\\.com|@hotmail\\.com|@onFire\\.com)$");
         Matcher m = p.matcher(email);
-        return m.matches();
+
+        if(!m.find())
+        {
+            do {
+
+                System.out.println("Invalid email,Try again...");
+                Scanner sc = new Scanner(System.in);
+                email = sc.nextLine();
+            }
+            while(!m.find());
+            return false;
+        }
+        return true;
+    }
+
+    public void setEmail(String email) {
+            this.email = email;
     }
 
     public String AFichero(){
@@ -49,5 +54,10 @@ public abstract class Usuario {
 
     public String ToString(){
         return "email: " + email + " Nombre: " + name;
+    }
+
+    public static void guardarUsuario(String fichero, String contenido)
+    {
+
     }
 }
