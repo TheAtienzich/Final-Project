@@ -100,14 +100,13 @@ public class GestionMenu {
         System.out.println();
         System.out.print("Email: ");
         String email = sc.nextLine();
-        //Comprobamos que el email incluya @gmail o hotmail o OnFire(correo empresa)
-        /*boolean emailValido = Usuario.emailValido(email);
+        boolean emailValido = Usuario.emailValido(email);
         do{
             System.out.println("Invalid Email");
             System.out.print("Correo: ");
             email = sc.nextLine();
             emailValido = Usuario.emailValido(email);
-        }while(!emailValido);*/
+        }while(!emailValido);
 
         String password = sc.nextLine();
         Client c = new Client(name, surname, email, password);
