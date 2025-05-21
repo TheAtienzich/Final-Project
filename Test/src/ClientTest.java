@@ -12,4 +12,11 @@ class ClientTest {
         assertEquals("Juan", c.getName());
     }
 
+    //Test email
+    @Test
+    void emailValido()
+    {
+        assertFalse(Client.emailValido("1234567"));
+        assertTrue(Client.emailValido("1234567@gmail.com"));
+    }
 }
