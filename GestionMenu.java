@@ -416,6 +416,24 @@ public class GestionMenu {
         return false;
     }
 
+    //List candle
+    public static void ListCandle(List<Candle> stockCandles)
+    {
+        Scanner sc = new Scanner(System.in);
+        int position=0;
+        //List<Candle>candleInCart=new ArrayList<>();
+
+        do {
+            for (Candle c : stockCandles) {
+                System.out.println("------List of Candle-----");
+                System.out.println(c.ToString());
+                System.out.println("Write the position of candle for add to cart");
+                position=sc.nextInt();
+            }
+        }
+        while(position!=0);
+
+    }
 
 }
 
