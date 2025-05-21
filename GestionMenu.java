@@ -4,8 +4,8 @@ import java.util.*;
 
 public class GestionMenu {
     Scanner sc = new Scanner(System.in);
-    private final List<Candle> stockCandles =  new ArrayList<>();
-    private final Fragance[] stockFragances = new Fragance[100];
+    private static List<Candle> stockCandles =  new ArrayList<>();
+    private static Fragance[] stockFragances = new Fragance[100];
     //En cada posicion de esa lista se va a guardar un objeto vela (Se usara en la primera opcion de "Mostrar velas")
     private final List<Client> clientsApp = new ArrayList<>();
     private final List<Admin> adminsApp = new ArrayList<>();
@@ -18,7 +18,15 @@ public class GestionMenu {
     enum opcionMenuCarrito { SALIRCARRITO, AÑADIRVELAS, QUITARVELAS, CONFIRMARCOMPRA }
     enum opcionMenuVelasDetallado { SALIRMENU, AÑADIRVELASCARRITO }
 
-    public Fragance[] getFragances() {
+    public void CargarDatos() {
+        stockFragances = getFragances();
+        stockCandles = RellenarVelas();
+        //Cargar Users from File
+        //Cargar Pedidos from File
+        //velasInventario
+    }
+
+    public static Fragance[] getFragances() {
         stockFragances[0] = new Fragance("Lavanda", "0001LA",
                 "Fresco olor a lavanda, hecho 100% de la flor");
         stockFragances[1] = new Fragance("Chocolate", "0002CH",

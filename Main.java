@@ -18,7 +18,7 @@ public class Main {
                     g.Registrarse();
                     break;
                 case INICIARSESION:
-                    g.homeSessionCustomer();
+                    g.IniciarSesion();
                     break;
                 case SALIR:
                     System.out.println("Thanks for your visit");
