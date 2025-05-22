@@ -1,19 +1,9 @@
 import java.util.*;
 
 public class Admin extends Usuario {
-    private static String claveEmpresa = "000000F";
+    private static String companyKey = "000000F";
 
     public Admin(String email, String contrasenya, String nombre){
         super(email, contrasenya, nombre);
-
-    }
-
-    @Override
-    public String AFichero(){
-        return super.AFichero() + ";" +  claveEmpresa;
-    }
-
-    public String ToString(){
-        return super.ToString() + " Clave Empresa: " + claveEmpresa;
     }
 }
