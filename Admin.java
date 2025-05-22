@@ -1,11 +1,11 @@
 import java.util.*;
 
 public class Admin extends Usuario {
-    private String claveEmpresa;
+    private static String claveEmpresa = "000000F";
 
-    public Admin(String email, String contrasenya, String claveEmpresa, String nombre){
+    public Admin(String email, String contrasenya, String nombre){
         super(email, contrasenya, nombre);
-        this.claveEmpresa = "000000F";
+
     }
 
     @Override
