@@ -36,4 +36,15 @@ class GestionMenuTest {
         assertEquals(4, candle.getAmount());
     }
 
+    @Test
+    public void reduceCount()
+    {
+        Fragance frangance = new Fragance("Lavanda", "F01","Francia vela con aroma a lavanda");
+        Candle candle = new Candle("Vela relax", "Descripcion larga",
+                "Descripcion corta",frangance, 15.00, "C001");
+        assertEquals(0, candle.getAmount());
+        //Reduce candle
+        candle.RestarCantidad(3);
+        assertEquals(3, candle.getAmount());
+    }
 }
