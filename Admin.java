@@ -4,12 +4,13 @@ import java.util.*;
 public class Admin extends Usuario {
     private String companyKey;
     public static final String FILENAME = "admin.txt";
-    public Admin(String email, String contrasenya, String nombre, String companyKey){
-        super(email, contrasenya, nombre);
+    public Admin(String email, String passWord, String name, String companyKey){
+        super(email, passWord, name);
         this.companyKey = companyKey;
     }
-    public Admin(String pin, String pass) {
-        super("", pass, "");
+
+    public Admin(String companyKey, String passWord) {
+        super("", passWord, "");
         this.companyKey = companyKey;
     }
     public String getCompanyKey(){return companyKey;}
