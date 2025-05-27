@@ -104,17 +104,33 @@ public class GestionMenu {
         String email;
         String passWord;
         Client c = null;
-        boolean passwordCorrect = false;
+        boolean user=false,passwordCorrect = false;
 
-        System.out.println("Please enter email");
-        email = sc.nextLine();
-        //Check email
-        Usuario.emailValido(email);
-
-        System.out.println("Please enter password");
-        passWord = sc.nextLine();
         do {
+            System.out.println("Please enter email");
+            email = sc.nextLine();
+            //Check email
+            if (!Usuario.emailValido(email)) {
+                System.out.println("Invalid Email,Try again...");
+            }
+
+            for (Client client : clientsApp) {
+                if (client.getEmail().equalsIgnoreCase(email)) {
+                    c = client;
+                    user = true;
+                }
+            }
+            if (!user) {
+                System.out.println("Email not found.Try again...");
+            }
+        }
+        while(!user);
+
+        do {
+            System.out.println("Please enter password");
+            passWord = sc.nextLine();
             if(passWord.equals(c.getPassWord())) {
+                System.out.println("Bienvenido " + c.getName());
                 passwordCorrect = true;
             }
             else{
@@ -122,7 +138,6 @@ public class GestionMenu {
             }
         }while(!passwordCorrect);
 
-        System.out.println("Bienvenido " + c.getName());
     }
 
 
@@ -131,20 +146,21 @@ public class GestionMenu {
     public void Registrarse(){
         System.out.print("Name: ");
         String name = sc.nextLine();
-        System.out.println();
         System.out.print("Surname: ");
         String surname = sc.nextLine();
-        System.out.println();
-        System.out.print("Email: ");
-        String email = sc.nextLine();
-        boolean emailValido = Usuario.emailValido(email);
-        do{
-            System.out.println("Invalid Email");
-            System.out.print("Correo: ");
-            email = sc.nextLine();
-            emailValido = Usuario.emailValido(email);
-        }while(!emailValido);
+        String email;
 
+        do{
+            System.out.print("Email: ");
+            email=sc.nextLine();
+
+            if(!Usuario.emailValido(email))
+            {
+                System.out.println("Invalid Email,Try again...");
+            }
+        }while(!Usuario.emailValido(email));
+
+        System.out.print("Password: ");
         String password = sc.nextLine();
         Client c = new Client(name, surname, email, password);
         clientsApp.add(c);
