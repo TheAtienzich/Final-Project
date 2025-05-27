@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,6 +19,21 @@ class GestionMenuTest {
     @Test
     public void homeSessionAdminTest() throws Exception {
         //Admin a = new Admin("juanReyes@OnFire.com", "1234","00000F");
+    }
+
+    @Test
+    public void addCountCandlesTest(){
+        Fragance frangance = new Fragance("Lavanda", "F01","Francia vela con aroma a lavanda");
+        Candle candle = new Candle("Vela relax", "Descripcion larga",
+                "Descripcion corta",frangance, 15.00, "C001");
+        assertEquals(0, candle.getAmount());
+        // Add 3 candles
+        candle.AnyadirCantidad(3);
+        assertEquals(3, candle.getAmount());
+        candle.AnyadirCantidad(0);
+        assertEquals(5, candle.getAmount());
+        candle.AnyadirCantidad(-1);
+        assertEquals(4, candle.getAmount());
     }
 
 }
