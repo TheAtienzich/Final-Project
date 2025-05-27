@@ -101,11 +101,11 @@ public class GestionMenu {
 
     //Iniciar Session
     public void IniciarSesion(){
-        String email;
-        String passWord;
-        Client c = null;
+        String email,passWord;
+        Client c=null;
         boolean user=false,passwordCorrect = false;
 
+        sc.nextLine();
         do {
             System.out.println("Please enter email");
             email = sc.nextLine();
@@ -113,13 +113,16 @@ public class GestionMenu {
             if (!Usuario.emailValido(email)) {
                 System.out.println("Invalid Email,Try again...");
             }
-
-            for (Client client : clientsApp) {
-                if (client.getEmail().equalsIgnoreCase(email)) {
-                    c = client;
-                    user = true;
+            else{
+                    for (Client client : clientsApp)
+                    {
+                        if (client.getEmail().equalsIgnoreCase(email)) {
+                            c = client;
+                            user = true;
+                            break;
+                        }
+                    }
                 }
-            }
             if (!user) {
                 System.out.println("Email not found.Try again...");
             }
@@ -144,6 +147,7 @@ public class GestionMenu {
 
 
     public void Registrarse(){
+        sc.nextLine();
         System.out.print("Name: ");
         String name = sc.nextLine();
         System.out.print("Surname: ");
@@ -164,7 +168,7 @@ public class GestionMenu {
         String password = sc.nextLine();
         Client c = new Client(name, surname, email, password);
         clientsApp.add(c);
-        System.out.println("Bienvenido " + c.getName());
+        System.out.println("Bienvenido " + name);
         clienteSesionActual = c;
     }
 
