@@ -99,6 +99,35 @@ public class GestionMenu {
         return opcionMenuBienvenida.values()[seleccion];
     }
 
+    //Iniciar Session
+    public void IniciarSesion(){
+        String email;
+        String passWord;
+        Client c = null;
+        boolean passwordCorrect = false;
+
+        System.out.println("Please enter email");
+        email = sc.nextLine();
+        //Check email
+        Usuario.emailValido(email);
+
+        System.out.println("Please enter password");
+        passWord = sc.nextLine();
+        do {
+            if(passWord.equals(c.getPassWord())) {
+                passwordCorrect = true;
+            }
+            else{
+                System.out.println("Incorrect password");
+            }
+        }while(!passwordCorrect);
+
+        System.out.println("Bienvenido " + c.getName());
+    }
+
+
+
+
     public void Registrarse(){
         System.out.print("Name: ");
         String name = sc.nextLine();
