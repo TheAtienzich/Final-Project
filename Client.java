@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Client extends Usuario{
-    private String name;
+    //private String name;
     private String surname;
     private String address;
     private int phoneNumber;
@@ -15,14 +15,14 @@ public class Client extends Usuario{
         this.surname = surname;
         ordersClient = new ArrayList<>();
     }
-
+    /*
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
+    }*/
 
     public String getLocality() {
         return locality;
