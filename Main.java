@@ -7,6 +7,7 @@ public class Main {
         GestionMenu g = new GestionMenu();
         GestionMenu.opcionMenuBienvenida opcion1;
         GestionMenu.opcionMenuCliente opcionC;
+       List<Client>client=new ArrayList<>();
         Admin admin1 = new Admin("Jorge.Reyes@OnFire.com","$1Contraseña1$","Jorge Reyes",
                 "PIN01");
         do{
@@ -33,10 +34,13 @@ public class Main {
             switch(opcionC)
             {
                 case VERCARRITO:
+                    g.verCarrito();
                     break;
                 case VERPEDIDOS:
+                    g.verPedido((Client) client);
                     break;
                 case VERVELAS:
+                    g.verListadoVelas();
                     break;
                 case SALIR:
                     System.out.println("Thanks for your visit");
