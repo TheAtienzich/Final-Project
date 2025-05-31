@@ -293,7 +293,7 @@ public class GestionMenu {
         } else {
             System.out.println(" Your orders: ");
             for(Order order: orders){
-                order.toString();
+               System.out.println(order);
             }
         }
     }
@@ -416,6 +416,9 @@ public class GestionMenu {
                 Calendar fechaHoraActual = Calendar.getInstance();
                 clienteSesionActual.setNewOrderInList(new Order(CalculateTotalPrice(),
                         fechaHoraActual, clienteSesionActual ));
+                Carrito.clear();
+                System.out.println("Order confirmed");
+
             } else if (sc.nextLine().equals("N")) {
                 letraCorrecta = true;
                 System.out.println("Tomese su tiempo no importa");

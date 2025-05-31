@@ -53,8 +53,7 @@ public class Order {
         String result = codeOrder + ": " +
                 "\nTotal price: " + totalPrice +
                 "\nOrder date: " + orderDate.getTime() +
-                "\nClient: " + client.getName() +
-                "\nCandles:\n";
+                "\nClient: " + client.getName();
 
         for (var vela : candlesOrder.entrySet()) {
             result += "   - " + vela.getKey().getName() + " (" + vela.getValue() + ")\n";
