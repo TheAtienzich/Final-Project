@@ -10,10 +10,10 @@ public class GestionMenu {
     private final List<Client> clientsApp = new ArrayList<>();
     private final List<Admin> adminsApp = new ArrayList<>();
     private final List<Candle> Carrito =  new ArrayList();
-    private Client clienteSesionActual = null;
+    Client clienteSesionActual;
 
     enum opcionMenuBienvenida { SALIR, INICIARSESION, REGISTRARSE }
-    enum opcionMenuCliente { SALIR, VERCARRITO, VERPEDIDOS, VERVELAS }
+    enum opcionMenuCliente { SALIR, MENUCARRITO, VERPEDIDOS, VERVELAS }
     enum opcionMenuAdmin {}
     enum opcionMenuCarrito { SALIRCARRITO, AÑADIRVELAS, QUITARVELAS, CONFIRMARCOMPRA }
     enum opcionMenuVelasDetallado { SALIRMENU, AÑADIRVELASCARRITO }
@@ -133,8 +133,10 @@ public class GestionMenu {
             System.out.println("Please enter password");
             passWord = sc.nextLine();
             if(passWord.equals(c.getPassWord())) {
-                System.out.println("Bienvenido " + c.getName());
+                clienteSesionActual=c;
                 passwordCorrect = true;
+                System.out.println("Bienvenido " + c.getName());
+
             }
             else{
                 System.out.println("Incorrect password");
@@ -168,8 +170,8 @@ public class GestionMenu {
         String password = sc.nextLine();
         Client c = new Client(name, surname, email, password);
         clientsApp.add(c);
-        System.out.println("Bienvenido " + name);
         clienteSesionActual = c;
+        System.out.println("Bienvenido " + name);
     }
 
 
@@ -249,7 +251,7 @@ public class GestionMenu {
         boolean norepetir = false;
         do {
             System.out.println("-   -   -ONFIRE!-   -   -");
-            System.out.println(" 1. Ver el carrito");
+            System.out.println(" 1. Menu del carrito");
             System.out.println(" 2. Ver mis pedidos");
             System.out.println(" 3. Ver el listado de velas");
             System.out.println(" 0. Salir");
@@ -268,20 +270,26 @@ public class GestionMenu {
     public void verCarrito(){
         System.out.println("--------------------------");
         int contador = 1;
-        System.out.println("The cart have "+Carrito.size()+" order");
         if(Carrito.isEmpty())
         {
             System.out.println("The cart is empty");
             return;
         }
-        for(Candle c : Carrito){
+
+            System.out.println("The cart have "+Carrito.size()+" candles");
+            System.out.println("---YOUR CART---");
+
+            for(Candle c : Carrito){
             System.out.println(contador + ". " +
                     c.getName() + "; " + c.getShortDescp() + "; "
                     + c.getAmount());
-            contador++;
-        }
+             contador++;
+            }
+        System.out.println("All :"+CalculateTotalPrice()+"eur.");
         System.out.println("-------------------------");
+
     }
+
     public void verPedido(Client cliente)
     {
         List<Order> orders = cliente.getOrdersClient();
@@ -294,24 +302,45 @@ public class GestionMenu {
             }
         }
     }
-    public opcionMenuCarrito menuCarrito(){
-        int seleccion;
-        boolean norepetir = false;
+    public void menuCarrito() {
+
+        opcionMenuCarrito opcion;
         do {
             System.out.println("-   -   -CARRITO-   -   -");
             verCarrito();
             System.out.println("---¿Que quieres hacer?---");
-            System.out.println("1. " + opcionMenuCarrito.AÑADIRVELAS);
-            System.out.println("2. " + opcionMenuCarrito.QUITARVELAS);
-            System.out.println("3. " + opcionMenuCarrito.CONFIRMARCOMPRA);
-            System.out.println("0. " + opcionMenuCarrito.SALIRCARRITO);
+            System.out.println("1. Add candles");
+            System.out.println("2. Reduce candles");
+            System.out.println("3.Confirm purchase");
+            System.out.println("0.Exist");
             System.out.println("-------------------------");
-            seleccion = sc.nextInt();
-            if(seleccion == 1 || seleccion == 2 || seleccion == 3 || seleccion == 0){
-                norepetir = true;
+            try {
+
+                int seleccion = sc.nextInt();
+                sc.nextLine();
+                opcion = opcionMenuCarrito.values()[seleccion];
+                switch (opcion) {
+                    case AÑADIRVELAS:
+                        añadirVelas();
+                        break;
+                    case QUITARVELAS:
+                        quitarVelas();
+                        break;
+                    case CONFIRMARCOMPRA:
+                        confirmarCompra();
+                        break;
+                    case SALIRCARRITO:
+                        return;
+                    default:
+                        System.out.println("Opcion invalid");
+                }
             }
-        } while(!norepetir);
-        return opcionMenuCarrito.values()[seleccion];
+            catch(InputMismatchException |ArrayIndexOutOfBoundsException e)
+            {
+                System.out.println(("Error:Enter number valid please"));
+            }
+        } while (true) ;
+
     }
 
     public void añadirVelas() {

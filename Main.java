@@ -34,11 +34,18 @@ public class Main {
             opcionC = g.MenuCliente();
             switch(opcionC)
             {
-                case VERCARRITO:
-                    g.verCarrito();
+                case MENUCARRITO:
+                    g.menuCarrito();
                     break;
                 case VERPEDIDOS:
-                    g.verPedido((Client) client);
+                    if(g.clienteSesionActual!=null)
+                    {
+                        g.verPedido(g.clienteSesionActual);
+                    }
+                    else{
+                        System.out.println("You need login in first");
+                    }
+
                     break;
                 case VERVELAS:
                     g.verListadoVelas();
