@@ -103,48 +103,43 @@ public class GestionMenu {
     public void IniciarSesion(){
         String email,passWord;
         Client c=null;
-        boolean user=false,passwordCorrect = false;
+        boolean passwordCorrect = false;
 
         sc.nextLine();
-        do {
-            System.out.println("Please enter email");
-            email = sc.nextLine();
+
+        System.out.println("Please enter email");
+         email = sc.nextLine();
             //Check email
-            if (!Usuario.emailValido(email)) {
-                System.out.println("Invalid Email,Try again...");
-            }
-            else{
-                    for (Client client : clientsApp)
-                    {
-                        if (client.getEmail().equalsIgnoreCase(email)) {
-                            c = client;
-                            user = true;
-                            break;
-                        }
-                    }
-                }
-            if (!user) {
-                System.out.println("Email not found.Try again...");
+        if (!Usuario.emailValido(email)) {
+            System.out.println("Invalid email format.");
+            return;
+        }
+
+        for (Client client : clientsApp)
+        {
+            if (client.getEmail().equalsIgnoreCase(email)) {
+                c = client;
+                break;
             }
         }
-        while(!user);
+        if (c==null) {
+            System.out.println("User doesn't exist");
+            return;
+        }
 
         do {
             System.out.println("Please enter password");
             passWord = sc.nextLine();
-            if(passWord.equals(c.getPassWord())) {
-                clienteSesionActual=c;
+            if (passWord.equals(c.getPassWord())) {
+                clienteSesionActual = c;
                 passwordCorrect = true;
                 System.out.println("Bienvenido " + c.getName());
 
-            }
-            else{
+            } else {
                 System.out.println("Incorrect password");
             }
-        }while(!passwordCorrect);
-
+        } while (!passwordCorrect);
     }
-
 
 
 
@@ -414,14 +409,14 @@ public class GestionMenu {
         System.out.println("Are you sure of your purchase?(Y/N)");
         boolean letraCorrecta = false;
         do {
-            if (sc.nextLine() == "Y") {
+            if (sc.nextLine().equals("Y")) {
                 letraCorrecta = true;
                 System.out.println("Su pedido le llegara pronto");
                 System.out.println("Gracias por su compra!");
                 Calendar fechaHoraActual = Calendar.getInstance();
                 clienteSesionActual.setNewOrderInList(new Order(CalculateTotalPrice(),
                         fechaHoraActual, clienteSesionActual ));
-            } else if (sc.nextLine() == "N") {
+            } else if (sc.nextLine().equals("N")) {
                 letraCorrecta = true;
                 System.out.println("Tomese su tiempo no importa");
                 System.out.println("Gracias por confiar en nosotros!");

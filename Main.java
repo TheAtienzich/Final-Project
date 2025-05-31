@@ -11,6 +11,8 @@ public class Main {
        List<Client>client=new ArrayList<>();
         Admin admin1 = new Admin("Jorge.Reyes@OnFire.com","$1Contraseña1$","Jorge Reyes",
                 "PIN01");
+
+        while(true){
         do{
             ///
             opcion1 = g.MenuBienvenida();
@@ -44,8 +46,8 @@ public class Main {
                     }
                     else{
                         System.out.println("You need login in first");
+                        opcionC=GestionMenu.opcionMenuCliente.SALIR;
                     }
-
                     break;
                 case VERVELAS:
                     g.verListadoVelas();
@@ -55,7 +57,8 @@ public class Main {
                     break;
                 default:
                     System.out.println("Choose an option from the menu!!");
-            }
-        }while(opcionC != GestionMenu.opcionMenuCliente.SALIR);
+                }
+            }while(opcionC != GestionMenu.opcionMenuCliente.SALIR);
+        }
     }
 }
