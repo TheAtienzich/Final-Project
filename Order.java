@@ -13,6 +13,7 @@ public class Order {
         this.totalPrice = totalPrice;
         this.orderDate = orderDate;
         this.client = client;
+        this.candlesOrder=new HashMap<>();
     }
 
     public String getCodeOrder() {
