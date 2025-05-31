@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
         List<Admin> admins = new ArrayList<>();
         GestionMenu g = new GestionMenu();
+        g.CargarDatos();
         GestionMenu.opcionMenuBienvenida opcion1;
         GestionMenu.opcionMenuCliente opcionC;
        List<Client>client=new ArrayList<>();
