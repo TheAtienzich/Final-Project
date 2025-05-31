@@ -182,11 +182,20 @@ public class GestionMenu {
             System.out.println(" 1. Añadir la vela al carrito");
             System.out.println(" 0. Salir al menu");
             System.out.println("-------------------------");
-            seleccion = sc.nextInt();
-            if (seleccion == 1 || seleccion == 0) {
-                norepetir = true;
+            try{
+                seleccion = sc.nextInt();
+                sc.nextLine();
+                if (seleccion == 1 || seleccion == 0) {
+                    norepetir = true;
+                }
+                else{System.out.println("Opcion invalid.Try again...");}
+             }
+            catch (InputMismatchException e){
+                sc.nextLine();
+                seleccion=-1;
             }
-        } while (!norepetir);
+        }
+        while (!norepetir);
         return opcionMenuVelasDetallado.values()[seleccion];
     }
 
@@ -205,7 +214,15 @@ public class GestionMenu {
         System.out.println("Nombre: " + v.getName());
         System.out.println(v.getLongDescrp());
         System.out.println("Precio: " + v.getPrice());
-        MenuVelasDetallada(v);
+        opcionMenuVelasDetallado opcion=MenuVelasDetallada(v);
+        switch(opcion) {
+            case AÑADIRVELASCARRITO:
+                AñadirVelaCarrito(v);
+                break;
+            case SALIRMENU:
+                SalirAMenuVelas();
+                break;
+        }
     }
 
     public void verListadoVelas(){
@@ -251,6 +268,12 @@ public class GestionMenu {
     public void verCarrito(){
         System.out.println("--------------------------");
         int contador = 1;
+        System.out.println("The cart have "+Carrito.size()+" order");
+        if(Carrito.isEmpty())
+        {
+            System.out.println("The cart is empty");
+            return;
+        }
         for(Candle c : Carrito){
             System.out.println(contador + ". " +
                     c.getName() + "; " + c.getShortDescp() + "; "
