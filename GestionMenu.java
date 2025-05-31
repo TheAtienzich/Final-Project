@@ -209,6 +209,10 @@ public class GestionMenu {
     }
 
     public void verListadoVelas(){
+        if(stockCandles.isEmpty()){
+            System.out.println("The are currently no candles available");
+            return;
+        }
         System.out.println("- - -VELAS AROMATICAS- - -");
         for (int i = 0; i < stockCandles.size(); i++) {
             Candle v = stockCandles.get(i);
