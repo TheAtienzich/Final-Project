@@ -43,6 +43,11 @@ public class ProductManagement {
     //Reduce the candle
     public void reduceCandle(HashMap<Candle, String> candlesOrder)
     {
+        if(candlesOrder==null)
+        {
+            System.out.println("No exist order");
+            return;
+        }
         System.out.println("Write the candle's code:");
         String codeCandle= sc.nextLine();
         //Check if exist
