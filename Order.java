@@ -13,6 +13,7 @@ public class Order {
         this.totalPrice = totalPrice;
         this.orderDate = orderDate;
         this.client = client;
+        this.candlesOrder=new HashMap<>();
     }
 
     public String getCodeOrder() {
@@ -52,8 +53,7 @@ public class Order {
         String result = codeOrder + ": " +
                 "\nTotal price: " + totalPrice +
                 "\nOrder date: " + orderDate.getTime() +
-                "\nClient: " + client.getName() +
-                "\nCandles:\n";
+                "\nClient: " + client.getName();
 
         for (var vela : candlesOrder.entrySet()) {
             result += "   - " + vela.getKey().getName() + " (" + vela.getValue() + ")\n";
@@ -71,3 +71,4 @@ public class Order {
         return result;
     }
 }
+

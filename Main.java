@@ -8,13 +8,12 @@ public class Main {
         g.CargarDatos();
         GestionMenu.opcionMenuBienvenida opcion1;
         GestionMenu.opcionMenuCliente opcionC;
-       List<Client>client=new ArrayList<>();
+        List<Client>client=new ArrayList<>();
         Admin admin1 = new Admin("Jorge.Reyes@OnFire.com","$1Contraseña1$","Jorge Reyes",
                 "PIN01");
 
         while(true){
         do{
-            ///
             opcion1 = g.MenuBienvenida();
             switch(opcion1)
             {
